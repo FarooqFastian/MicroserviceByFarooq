@@ -60,13 +60,10 @@ namespace Catalog.API.Repositories
 
         public async Task<bool> UpdateProduct(Product product)
         {
-            FilterDefinition<Product> filter = Builders<Product>
-                                .Filter
-                                .ElemMatch(p => p.ID, product.ID);
 
             var updateResult = await _context
                                 .Products
-                                .ReplaceOneAsync(filter, replacement: product);
+                                .ReplaceOneAsync(filter: g => g.ID == product.ID, replacement: product);
 
             return updateResult.IsAcknowledged
                 && updateResult.ModifiedCount > 0;

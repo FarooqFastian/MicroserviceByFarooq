@@ -3,36 +3,36 @@ syntax = "proto3";
 option csharp_namespace = "Discount.Grpc.Protos";
 
 service DiscountProtoService{
-		rpc GetDiscount (GetDiscountRequest) returns (CoupanModel);
+	rpc GetDiscount (GetDiscountRequest) returns (CoupanModel);
 
-		rps CreateDiscount (CreateDiscountRequest) returns (CoupanModel);
-		rps UpdateDiscount (UpdateDiscountRequest) returns (CoupanModel);
-		rps DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
+	rps CreateDiscount (CreateDiscountRequest) returns (CoupanModel);
+	rps UpdateDiscount (UpdateDiscountRequest) returns (CoupanModel);
+	rps DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
 
 message GetDiscountRequest{
-		string productName = 1
+	string productName = 1
 }
 
 message CoupanModel{
-		int32 id = 1;
-		string productName = 2;
-		string description = 3;
-		int32 amount = 4;
+	int32 id = 1;
+	string productName = 2;
+	string description = 3;
+	int32 amount = 4;
 }
 
 message CreateDiscountRequest{
-		CoupanModel coupan = 1
+	CoupanModel coupan = 1
 }
 
 message UpdateDiscountRequest{
-		CoupanModel coupan = 1
+	CoupanModel coupan = 1
 }
 
 message DeleteDiscountRequest{
-		string productName = 1
+	string productName = 1
 }
 
 message DeleteDiscountResponse{
-		bool success = 1
+	bool success = 1
 }

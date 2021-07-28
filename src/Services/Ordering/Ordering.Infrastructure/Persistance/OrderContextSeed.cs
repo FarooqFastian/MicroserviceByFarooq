@@ -16,6 +16,7 @@ namespace Ordering.Infrastructure.Persistance
             {
                 orderContext.Orders.AddRange(GetPreConfiguredOrders());
                 await orderContext.SaveChangesAsync();
+                logger.LogInformation("Seed database associated with context {DbContextName}", typeof(OrderContext).Name);
             }
         }
 

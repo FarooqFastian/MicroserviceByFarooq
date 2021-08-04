@@ -114,8 +114,19 @@ services:
       - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"
       - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
-        - orderdb
+        - catalog.api
         - rabbitmq
     ports:
         - "8004:80"
 
+  ocelotapigw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+        - orderdb
+        - basket.api
+        - discount.api
+        - ordering.api
+    ports:
+      - "8010:80"

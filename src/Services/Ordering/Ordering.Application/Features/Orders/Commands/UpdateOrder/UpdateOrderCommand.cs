@@ -22,6 +22,6 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
         public string CardNumber { get; set; }
         public string Expiration { get; set; }
         public string CVV { get; set; }
-        public string PaymentMethod { get; set; }
+        public int PaymentMethod { get; set; }
     }
 }

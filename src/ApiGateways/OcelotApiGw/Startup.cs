@@ -15,6 +15,13 @@ namespace OcelotApiGw
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
+            });
             services
                 .AddOcelot()
                 .AddCacheManager(settings => settings.WithDictionaryHandle());
@@ -29,6 +36,7 @@ namespace OcelotApiGw
             }
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

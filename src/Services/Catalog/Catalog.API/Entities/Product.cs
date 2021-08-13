@@ -16,6 +16,7 @@ namespace Catalog.API.Entities
         public string Summery { get; set; }
         public string Description { get; set; }
         public string ImageFile { get; set; }
+        public int Stock { get; set; }
         public decimal Price { get; set; }
     }
 }

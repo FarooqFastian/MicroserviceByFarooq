@@ -37,6 +37,14 @@ namespace Basket.API.Controllers
             return Ok(basket ?? new ShoppingCart(userName));
         }
 
+        //[HttpGet("{userName},{productId}", Name = "UpdateBasket")]
+        //[ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
+        //public async Task<ActionResult<IEnumerable<ShoppingCart>>> UpdateBasket(string userName,string productId)
+        //{
+        // //   var basket = await _repository.GetBasket(userName);
+        //    return Ok(await _repository.UpdateBasket(userName, productId));
+        //}
+
         [HttpPost]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<ShoppingCart>>> UpdateBasket([FromBody] ShoppingCart basket)
